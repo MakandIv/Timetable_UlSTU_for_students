@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="auto"
+                android:hint="@string/enter_group"
+                android:inputType="text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/day_of_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:spinnerMode="dropdown" />
+
+                <Spinner
+                    android:id="@+id/week"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/load" />
+
+            <TableLayout
+                android:id="@+id/table1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/para1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/para1num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para1time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time1"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para1text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para2num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para2time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time2"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para2text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para3num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para3time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time3"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para3text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para4num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para4time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time4"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para4text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para5num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para5time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time5"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para5text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para6num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="6"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para6time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time6"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para6text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para7num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="7"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para7time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time7"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para7text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/para8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/para8num"
+                        android:layout_width="20dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="8"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para8time"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:padding="5dp"
+                        android:text="@string/time8"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/para8text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxWidth="250dp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

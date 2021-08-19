@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Timetable of UlSTU</string>
+
+    <!-- Time -->
+    <string name="time1" translatable="false">08:30 - 09:50</string>
+    <string name="time2" translatable="false">10:00 - 11:20</string>
+    <string name="time3" translatable="false">11:30 - 12:50</string>
+    <string name="time4" translatable="false">13:30 - 14:50</string>
+    <string name="time5" translatable="false">15:00 - 16:20</string>
+    <string name="time6" translatable="false">16:30 - 17:50</string>
+    <string name="time7" translatable="false">18:00 - 19:20</string>
+    <string name="time8" translatable="false">19:30 - 20:50</string>
+
+    <!-- Home -->
+    <string name="groups">Groups</string>
+    <string name="enter_group">Enter Group Name</string>
+    <string name="weeks">Number of Week</string>
+    <string name="day_of_week">Day of Week</string>
+
+    <string name="first_week">First Week</string>
+    <string name="second_week">Second Week</string>
+
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+    <string name="load">Load</string>
+
+    <string name="no_connected">No internet connection</string>
+    <string name="connection_error">Data loading error, restart the application.</string>
+    <string name="data_error">The saved data contains an error. The data is returned by default.</string>
+    <string name="no_connected_first">No internet connection. No cached data found.</string>
+    <string name="refresh_successful">Successful refreshed</string>
+    <string name="no_access">There is no access to the UlSTU page. Perhaps there is no timetable yet.</string>
+    <string name="group_not_found">The group was not found. You may have entered the group name with a mistake.</string>
+
+    <string name="dark">Switch Theme</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="nav_header_title">Timetable UlSTU</string>
+    <string name="nav_header_subtitle">Source site: www.ulstu.ru</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_notes">TImetable notes</string>
+    <string name="menu_about">About application</string>
+
+    <!-- Notes -->
+    <string name="add_note">Add a note</string>
+    <string name="note_editor">Note editor</string>
+    <string name="coming_soon">Coming Soon</string>
+
+    <!-- Note editor -->
+    <string name="save">Save</string>
+    <string name="select_date">Date</string>
+    <string name="select_hand">Day of week and week</string>
+    <string name="select_once">Once</string>
+    <string name="select_multiple">Multiple</string>
+
+</resources>

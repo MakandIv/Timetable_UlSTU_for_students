@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Расписание УлГТУ</string>
+
+    <!-- Главная -->
+    <string name="groups">Группы</string>
+    <string name="enter_group">Введите название группы</string>
+    <string name="weeks">Номер недели</string>
+    <string name="day_of_week">День недели</string>
+
+    <string name="first_week">Первая неделя</string>
+    <string name="second_week">Вторая неделя</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+
+    <string name="load">Загрузить</string>
+
+    <string name="no_connected">Нет интернет-соединения</string>
+    <string name="connection_error">Ошибка загрузки данных, перезагрузите приложение.</string>
+    <string name="data_error">Сохранённые данные содержат ошибку. Данные возвращены по умолчанию.</string>
+    <string name="no_connected_first">Нет интернет-соединения. Кэшированных данных не обнаружено.</string>
+    <string name="refresh_successful">Успешно обновлено</string>
+
+    <string name="dark">Переключить тему</string>
+    <string name="refresh">Обновить</string>
+
+    <string name="nav_header_title">Расписание УлГТУ</string>
+    <string name="nav_header_subtitle">Сайт-источник: www.ulstu.ru</string>
+
+    <string name="menu_home">Главная</string>
+    <string name="menu_notes">Заметки к расписанию</string>
+    <string name="menu_about">О программе</string>
+
+    <string name="no_access">Нет доступа к странице УлГТУ. Возможно, расписания ещё нет.</string>
+    <string name="group_not_found">Группа не найдена. Возможно, вы ввели название группы с ошибкой.</string>
+
+    <!-- Заметки -->
+    <string name="add_note">Добавить заметку</string>
+    <string name="coming_soon">В разработке</string>
+    <string name="note_editor">Редактор заметок</string>
+
+    <!-- Редактор заметок -->
+    <string name="select_date">Дата</string>
+    <string name="select_hand">День недели и неделя</string>
+    <string name="select_once">Однократно</string>
+    <string name="select_multiple">Многократно</string>
+    <string name="save">Сохранить</string>
+
+</resources>
