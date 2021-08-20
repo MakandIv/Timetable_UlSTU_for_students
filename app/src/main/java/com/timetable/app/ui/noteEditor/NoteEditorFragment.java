@@ -24,6 +24,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.timetable.app.R;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,12 +35,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.google.gson.reflect.TypeToken;
-
-import kotlin.text.Charsets;
 
 public class NoteEditorFragment extends Fragment {
     RadioGroup onceOrMultiple;
@@ -112,29 +112,31 @@ public class NoteEditorFragment extends Fragment {
     }
 
     private void saveClick(View root, View v) {
-        final Type type = new TypeToken<ArrayList<HashMap<String, Object>>>() {
+        final Type type = new TypeToken<ArrayList<HashMap<String, String>>>() {
         }.getType();
 
-        ArrayList<HashMap<String, Object>> arrayList;
-
+        ArrayList<HashMap<String, String>> arrayList;
+        FileInputStream fis;
         try {
+            fis = root.getContext().openFileInput("NoteData.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
             Gson gson = new Gson();
-            JsonReader jsonReader = new JsonReader(new FileReader("NoteData.json"));
-            arrayList = gson.fromJson(jsonReader, type);
-            jsonReader.close();
+            arrayList = gson.fromJson(ois.readLine(), type);
+            ois.close();
         } catch (IOException e) {
             e.printStackTrace();
             arrayList = new ArrayList<>();
         }
 
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("dayOfWeek", (int)dayOfWeek.getSelectedItemPosition());
-        map.put("week", (int)week.getSelectedItemPosition());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("dayOfWeek", String.valueOf(dayOfWeek.getSelectedItemPosition()));
+        map.put("week", String.valueOf(week.getSelectedItemPosition()));
 
-        map.put("couple", (int)couple.getSelectedItemPosition());
-        map.put("noteText", noteText.getText());
+        map.put("couple", String.valueOf(couple.getSelectedItemPosition()));
+        map.put("noteText", String.valueOf(noteText.getText()));
 
-        map.put("active", true);
+        map.put("active", String.valueOf(true));
 
         arrayList.add(map);
         Gson gson = new Gson();
@@ -143,8 +145,7 @@ public class NoteEditorFragment extends Fragment {
             fos = root.getContext().openFileOutput("NoteData.json", Context.MODE_PRIVATE);
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             ObjectOutputStream oos = new ObjectOutputStream(bos);
-            String s = gson.toJson(arrayList, type);
-            oos.write(gson.toJson(arrayList).getBytes());
+            oos.write(gson.toJson(arrayList, type).getBytes(StandardCharsets.UTF_8));
             oos.close();
 
         } catch (IOException e) {

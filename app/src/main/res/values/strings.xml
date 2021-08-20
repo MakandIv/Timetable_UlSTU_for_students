@@ -72,4 +72,12 @@
     <string name="first_week_alt">1st</string>
     <string name="second_week_alt">2nd</string>
 
+    <string name="monday_alt">Mo</string>
+    <string name="tuesday_alt">Tu</string>
+    <string name="wednesday_alt">We</string>
+    <string name="thursday_alt">Th</string>
+    <string name="friday_alt">Fr</string>
+    <string name="saturday_alt">Sa</string>
+    <string name="sunday_alt">Su</string>
+
 </resources>

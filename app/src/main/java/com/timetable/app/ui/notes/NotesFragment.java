@@ -25,14 +25,21 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.timetable.app.R;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class NotesFragment extends Fragment {
 
@@ -40,95 +47,151 @@ public class NotesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         NotesViewModel notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
+        final int USER_ID = 60000;
 
         Button b = root.findViewById(R.id.add_notes);
         b.setOnClickListener(v -> click(root, v));
 
-        final Type type = new TypeToken<ArrayList<Map<String, Object>>>() {
-        }.getType();
-        ArrayList<Map<String, Object>> arrayList = null;
+        final Type type = new TypeToken<ArrayList<Map<String, String>>>() {}.getType();
+        ArrayList<Map<String, String>> arrayList = null;
+        FileInputStream fis;
         try {
+            fis = root.getContext().openFileInput("NoteData.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
             Gson gson = new Gson();
-            JsonReader jsonReader = new JsonReader(new FileReader("NoteData.json"));
-            arrayList = gson.fromJson(jsonReader, type);
+            arrayList = gson.fromJson(ois.readLine(), type);
+            ois.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        int countID = 1;
 
         if (arrayList != null) {
             TableLayout tableLayout = root.findViewById(R.id.table_notes);
-            for (Map<String, Object> map : arrayList) {
+            for (Map<String, String> map : arrayList) {
                 TableRow tableRow = new TableRow(tableLayout.getContext());
-                tableRow.setLayoutParams(new TableRow.LayoutParams(
+                tableRow.setLayoutParams(new TableLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT
                 ));
                 tableRow.setBackgroundColor(Color.parseColor("#C8C8C8"));
-                tableRow.setOrientation(TableRow.VERTICAL);
+                tableRow.setOrientation(TableRow.HORIZONTAL);
+                tableRow.setId(USER_ID + countID - 1550);
+                tableLayout.addView(tableRow);
                 LinearLayout linearLayout = new LinearLayout(tableRow.getContext());
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                linearLayout.setLayoutParams(new TableRow.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         (float) 0.2
                 ));
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 linearLayout.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                linearLayout.setId(USER_ID + countID - 1450);
+                tableRow.addView(linearLayout);
                 TextView dayOfWeekText = new TextView(linearLayout.getContext());
                 dayOfWeekText.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 ));
-                switch ((int)map.get("dayOfWeek")) {
-                    case 0:
+                switch (map.get("dayOfWeek")) {
+                    case "0":
                         dayOfWeekText.setText("Пн");
                         break;
-                    case 1:
+                    case "1":
                         dayOfWeekText.setText("Вт");
                         break;
-                    case 2:
+                    case "2":
                         dayOfWeekText.setText("Ср");
                         break;
-                    case 3:
+                    case "3":
                         dayOfWeekText.setText("Чт");
                         break;
-                    case 4:
+                    case "4":
                         dayOfWeekText.setText("Пт");
                         break;
-                    case 5:
+                    case "5":
                         dayOfWeekText.setText("Сб");
                         break;
-                    case 6:
+                    case "6":
                         dayOfWeekText.setText("Вс");
                         break;
                 }
                 dayOfWeekText.setTextColor(getResources().getColor(R.color.white));
+                dayOfWeekText.setId(USER_ID + countID - 6050);
+                dayOfWeekText.setGravity(Gravity.CENTER_HORIZONTAL);
+                linearLayout.addView(dayOfWeekText);
                 TextView weekText = new TextView(linearLayout.getContext());
                 weekText.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 ));
-                switch ((int)map.get("week")) {
-                    case 0:
+                switch (map.get("week")) {
+                    case "0":
                         weekText.setText(getString(R.string.first_week_alt));
                         break;
-                    case 1:
+                    case "1":
                         weekText.setText(getString(R.string.second_week_alt));
                         break;
                 }
                 weekText.setTextColor(getResources().getColor(R.color.white));
-                TextView noteText = new TextView(tableRow.getContext());
-                noteText.setLayoutParams(new LinearLayout.LayoutParams(
+                weekText.setGravity(Gravity.CENTER_HORIZONTAL);
+                weekText.setId(USER_ID + countID - 5151);
+                linearLayout.addView(weekText);
+                TextView coupleText = new TextView(tableRow.getContext());
+                coupleText.setLayoutParams(new TableRow.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         (float) 0.1
                 ));
-                noteText.setGravity(Gravity.CENTER|Gravity.CENTER_VERTICAL);
-                noteText.setText((String)map.get("noteText"));
+                coupleText.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                coupleText.setTextColor(getResources().getColor(R.color.white));
+                coupleText.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+                switch (map.get("couple")) {
+                    case "0":
+                        coupleText.setText(getString(R.string.couple1));
+                        break;
+                    case "1":
+                        coupleText.setText(getString(R.string.couple2));
+                        break;
+                    case "2":
+                        coupleText.setText(getString(R.string.couple3));
+                        break;
+                    case "3":
+                        coupleText.setText(getString(R.string.couple4));
+                        break;
+                    case "4":
+                        coupleText.setText(getString(R.string.couple5));
+                        break;
+                    case "5":
+                        coupleText.setText(getString(R.string.couple6));
+                        break;
+                    case "6":
+                        coupleText.setText(getString(R.string.couple7));
+                        break;
+                    case "7":
+                        coupleText.setText(getString(R.string.couple8));
+                        break;
+                }
+                tableRow.addView(coupleText);
+                TextView noteText = new TextView(tableRow.getContext());
+                noteText.setLayoutParams(new TableRow.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        1
+                ));
+                noteText.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.FILL_VERTICAL);
+                noteText.setText(new String(map.get("noteText").getBytes(), StandardCharsets.UTF_8));
+                tableRow.addView(noteText);
 
                 Switch switchEdit = new Switch(tableRow.getContext());
                 switchEdit.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                switchEdit.setChecked((boolean)map.get("active"));
+                switchEdit.setChecked(Boolean.parseBoolean(Objects.requireNonNull(map.get("active"))));
+                switchEdit.setId(USER_ID + countID - 4321);
+                tableRow.addView(switchEdit);
+                countID++;
             }
+
         };
 
         return root;

@@ -62,5 +62,12 @@
     <string name="couple8">8-я пара</string>
     <string name="first_week_alt">1-я</string>
     <string name="second_week_alt">2-я</string>
+    <string name="monday_alt">Пн</string>
+    <string name="tuesday_alt">Вт</string>
+    <string name="wednesday_alt">Ср</string>
+    <string name="thursday_alt">Чт</string>
+    <string name="friday_alt">Пт</string>
+    <string name="saturday_alt">Сб</string>
+    <string name="sunday_alt">Вс</string>
 
 </resources>
