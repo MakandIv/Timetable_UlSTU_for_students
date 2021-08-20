@@ -57,48 +57,8 @@ public class HomeFragment extends Fragment {
             EditText editText = root.findViewById(R.id.editGroup);
             Spinner day_of_week = root.findViewById(R.id.day_of_week);
             Spinner week = root.findViewById(R.id.week);
-            int dow = 0, w = 0;
-
-            switch (day_of_week.getSelectedItem().toString()) {
-                case "Понедельник":
-                case "Monday":
-                    dow = 1;
-                    break;
-                case "Вторник":
-                case "Tuesday":
-                    dow = 2;
-                    break;
-                case "Среда":
-                case "Wednesday":
-                    dow = 3;
-                    break;
-                case "Четверг":
-                case "Thursday":
-                    dow = 4;
-                    break;
-                case "Пятница":
-                case "Friday":
-                    dow = 5;
-                    break;
-                case "Суббота":
-                case "Saturday":
-                    dow = 6;
-                    break;
-                case "Воскресенье":
-                case "Sunday":
-                    dow = 7;
-                    break;
-            }
-            switch (week.getSelectedItem().toString()) {
-                case "Первая неделя":
-                case "First Week":
-                    w = 1;
-                    break;
-                case "Вторая неделя":
-                case "Second Week":
-                    w = 2;
-                    break;
-            }
+            int dow = day_of_week.getSelectedItemPosition() + 1;
+            int w = week.getSelectedItemPosition() + 1;
             if (all_desc == null) {
                 data = SiteData.groupData(root.getContext(), editText.getText().toString());
                 all_desc = SiteData.allTimetable(root.getContext(), data, true);

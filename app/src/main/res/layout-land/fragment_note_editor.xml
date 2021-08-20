@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/day_of_week"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:spinnerMode="dropdown" />
+
+            <Spinner
+                android:id="@+id/week"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_weight="4"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/couple"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+
+        <EditText
+            android:id="@+id/note_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/example_note_text"
+            android:inputType="textPersonName" />
+
+        <RadioGroup
+            android:id="@+id/once_or_multiple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/select_once"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="@string/select_once" />
+
+            <RadioButton
+                android:id="@+id/select_multiple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="@string/select_multiple" />
+
+        </RadioGroup>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            tools:layout_editor_absoluteX="232dp"
+            tools:layout_editor_absoluteY="182dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
