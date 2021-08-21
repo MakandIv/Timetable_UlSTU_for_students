@@ -1,7 +1,6 @@
 package com.timetable.app.ui.noteEditor;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,17 +19,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import com.timetable.app.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -38,7 +32,7 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 import com.google.gson.reflect.TypeToken;
 
 public class NoteEditorFragment extends Fragment {
@@ -58,6 +52,9 @@ public class NoteEditorFragment extends Fragment {
         week = root.findViewById(R.id.week);
         couple = root.findViewById(R.id.couple);
         noteText = root.findViewById(R.id.note_text);
+
+
+
 
         selectOnce.setChecked(true);
 
@@ -106,12 +103,12 @@ public class NoteEditorFragment extends Fragment {
         });
 
         Button b = root.findViewById(R.id.save);
-        b.setOnClickListener(v -> saveClick(root, v));
+        b.setOnClickListener(v -> saveClick(root));
 
         return root;
     }
 
-    private void saveClick(View root, View v) {
+    private void saveClick(View root) {
         final Type type = new TypeToken<ArrayList<HashMap<String, String>>>() {
         }.getType();
 
@@ -122,7 +119,10 @@ public class NoteEditorFragment extends Fragment {
             BufferedInputStream bis = new BufferedInputStream(fis);
             ObjectInputStream ois = new ObjectInputStream(bis);
             Gson gson = new Gson();
-            arrayList = gson.fromJson(ois.readLine(), type);
+            arrayList = gson.fromJson(new String(ois.readLine().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8), type);
+            if (arrayList == null) {
+                arrayList = new ArrayList<>();
+            }
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -147,7 +147,6 @@ public class NoteEditorFragment extends Fragment {
             ObjectOutputStream oos = new ObjectOutputStream(bos);
             oos.write(gson.toJson(arrayList, type).getBytes(StandardCharsets.UTF_8));
             oos.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

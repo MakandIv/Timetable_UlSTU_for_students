@@ -46,12 +46,15 @@
     <string name="note_editor">Редактор заметок</string>
 
     <!-- Редактор заметок -->
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+
     <string name="select_date">Дата</string>
     <string name="select_hand">День недели и неделя</string>
     <string name="select_once">Однократно</string>
     <string name="select_multiple">Многократно</string>
-    <string name="save">Сохранить</string>
     <string name="example_note_text">Высшая математика</string>
+
     <string name="couple1">1-я пара</string>
     <string name="couple2">2-я пара</string>
     <string name="couple3">3-я пара</string>
@@ -60,8 +63,10 @@
     <string name="couple6">6-я пара</string>
     <string name="couple7">7-я пара</string>
     <string name="couple8">8-я пара</string>
+
     <string name="first_week_alt">1-я</string>
     <string name="second_week_alt">2-я</string>
+
     <string name="monday_alt">Пн</string>
     <string name="tuesday_alt">Вт</string>
     <string name="wednesday_alt">Ср</string>

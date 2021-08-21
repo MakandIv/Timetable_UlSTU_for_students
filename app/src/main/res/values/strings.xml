@@ -55,11 +55,14 @@
 
     <!-- Note editor -->
     <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
     <string name="select_date">Date</string>
     <string name="select_hand">Day of week and week</string>
     <string name="select_once">Once</string>
     <string name="select_multiple">Multiple</string>
     <string name="example_note_text">Further Mathematics</string>
+
     <string name="couple1">1st couple</string>
     <string name="couple2">2nd couple</string>
     <string name="couple3">3rd couple</string>

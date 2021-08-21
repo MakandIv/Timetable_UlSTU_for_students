@@ -2,6 +2,7 @@ package com.timetable.app.ui.notes;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.timetable.app.R;
@@ -49,8 +51,8 @@ public class NotesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
         final int USER_ID = 60000;
 
-        Button b = root.findViewById(R.id.add_notes);
-        b.setOnClickListener(v -> click(root, v));
+        Button buttonAdd = root.findViewById(R.id.add_notes);
+        buttonAdd.setOnClickListener(v -> click(root, v));
 
         final Type type = new TypeToken<ArrayList<Map<String, String>>>() {}.getType();
         ArrayList<Map<String, String>> arrayList = null;
@@ -60,7 +62,7 @@ public class NotesFragment extends Fragment {
             BufferedInputStream bis = new BufferedInputStream(fis);
             ObjectInputStream ois = new ObjectInputStream(bis);
             Gson gson = new Gson();
-            arrayList = gson.fromJson(ois.readLine(), type);
+            arrayList = gson.fromJson(new String(ois.readLine().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8), type);
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,18 +85,19 @@ public class NotesFragment extends Fragment {
                 linearLayout.setLayoutParams(new TableRow.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        (float) 0.2
+                        (float) 0.1
                 ));
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
-                linearLayout.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                linearLayout.setBackgroundColor(getResources().getColor(R.color.purple_700));
                 linearLayout.setId(USER_ID + countID - 1450);
                 tableRow.addView(linearLayout);
                 TextView dayOfWeekText = new TextView(linearLayout.getContext());
                 dayOfWeekText.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        (float) 0.1
                 ));
-                switch (map.get("dayOfWeek")) {
+                switch (Objects.requireNonNull(map.get("dayOfWeek"))) {
                     case "0":
                         dayOfWeekText.setText("Пн");
                         break;
@@ -124,9 +127,10 @@ public class NotesFragment extends Fragment {
                 TextView weekText = new TextView(linearLayout.getContext());
                 weekText.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        (float) 0.1
                 ));
-                switch (map.get("week")) {
+                switch (Objects.requireNonNull(map.get("week"))) {
                     case "0":
                         weekText.setText(getString(R.string.first_week_alt));
                         break;
@@ -144,10 +148,10 @@ public class NotesFragment extends Fragment {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         (float) 0.1
                 ));
-                coupleText.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                coupleText.setBackgroundColor(getResources().getColor(R.color.purple_700));
                 coupleText.setTextColor(getResources().getColor(R.color.white));
                 coupleText.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-                switch (map.get("couple")) {
+                switch (Objects.requireNonNull(map.get("couple"))) {
                     case "0":
                         coupleText.setText(getString(R.string.couple1));
                         break;
@@ -181,18 +185,24 @@ public class NotesFragment extends Fragment {
                         1
                 ));
                 noteText.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.FILL_VERTICAL);
-                noteText.setText(new String(map.get("noteText").getBytes(), StandardCharsets.UTF_8));
+                noteText.setText(map.get("noteText"));
                 tableRow.addView(noteText);
 
                 Switch switchEdit = new Switch(tableRow.getContext());
-                switchEdit.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                switchEdit.setBackgroundColor(getResources().getColor(R.color.purple_700));
                 switchEdit.setChecked(Boolean.parseBoolean(Objects.requireNonNull(map.get("active"))));
                 switchEdit.setId(USER_ID + countID - 4321);
+                int dip = 48;
+                float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, getResources().getDisplayMetrics());
+                switchEdit.setLayoutParams(new TableRow.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        (int) px
+                ));
                 tableRow.addView(switchEdit);
                 countID++;
             }
 
-        };
+        }
 
         return root;
     }
